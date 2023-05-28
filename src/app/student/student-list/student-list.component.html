@@ -1,0 +1,45 @@
+<div class="container">
+  <div>
+    <label class="label-form">ID</label>
+    <input type="text" class="form-control" value={{studentSelected.id}} [(ngModel)]="newStudent.id" />
+    <label class="label-form">Name</label>
+    <input type="text" class="form-control" value={{studentSelected.name}} [(ngModel)]="newStudent.name" />
+    <label class="label-form">Age</label>
+    <input type="text" class="form-control" value={{studentSelected.age}} [(ngModel)]="newStudent.age" />
+    <button (click)="add()" class="btn btn-primary my-5">Add Student</button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>age</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let item of studentList">
+        <td scope="row">{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>
+          <button (click)="showSpecificStudent(item.id)" class="btn btn-primary">Detail</button></td>
+        <td>
+          <button (click)="updateSTd(item.id)" class="btn btn-primary mx-3">update</button></td>
+        <td>
+          <button (click)="stdUpdate(item.id)" class="btn btn-primary mx-3">save</button></td>
+        <td>
+          <button (click)="deleteStd(item.id)" class="btn btn-danger mx-3">delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <p>Selected student:</p>
+    <p>ID: {{studentSelected.id}}</p>
+    <p>Name: {{studentSelected.name}}</p>
+    <p>Age: {{studentSelected.age}}</p>
+  </div>
+
+</div>
+<app-student-detail [studentSelected]="studentSelected"></app-student-detail>

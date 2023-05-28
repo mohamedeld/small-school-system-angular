@@ -1,0 +1,36 @@
+<div class="container">
+  <h3 style="display:flex;justify-content:center;align-items:center">Department</h3>
+  <div>
+    <label class="label-form">ID</label>
+    <input type="text" class="form-control" [(ngModel)]="newDept.id" />
+    <label class="label-form">Dept Name</label>
+    <input type="text" class="form-control" [(ngModel)]="newDept.name" />
+    <button (click)="add()" class="btn btn-primary my-5">Add Department</button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let item of deptList">
+        <td scope="row">{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td><button (click)="showSpecificDept(item.id)" class="btn btn-primary">Detail</button></td>
+        <td><button (click)="updateDept(item.id)" class="btn btn-primary">update</button></td>
+        <td><button (click)="saveDept(item.id)" class="btn btn-primary">Save</button></td>
+        <td>
+          <button (click)="deleteDept(item.id)" class="btn btn-danger">delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <p>Selected student:</p>
+    <p>ID: {{selectedDept.id}}</p>
+    <p>Name: {{selectedDept.name}}</p>
+  </div>
+</div>
+<app-department-detail [selectedDept]="selectedDept"></app-department-detail>
